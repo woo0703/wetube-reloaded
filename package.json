@@ -1,0 +1,25 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "The best way to watch videos.",
+  "scripts": {
+    "win": "node index.js"
+  },
+  "author": "Daniel",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/woo0703/wetube-reloaded.git"
+  },
+  "bugs": {
+    "url": "https://github.com/woo0703/wetube-reloaded/issues"
+  },
+  "homepage": "https://github.com/woo0703/wetube-reloaded#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3"
+  }
+}
