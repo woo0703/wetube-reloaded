@@ -1,43 +1,23 @@
 import express from "express";
+import morgan from "morgan";
 
 const PORT = 4000;
 
 const app = express();
+const logger = morgan("dev");
 
-// #1) URL Logger 
-app.use((req, res, next) => {
-    console.log(`Path: ${req.path}`);
-    next();
-});
+const home = (req, res) => {
+  return res.send("hello");
+};
+const login = (req, res) => {
+  return res.send("login");
+};
 
-// #2) Time Logger 
-app.use((req, res, next) => {
-    const now = new Date();
-    console.log(`Time: ${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}`);
-    next();
-});
+app.use(logger);
+app.get("/", home);
+app.get("/login", login);
 
-// #3) Security Logger 
-app.use((req, res, next) => {
-    const protocol = req.protocol;
-    console.log(protocol === 'https' ? 'Secure' : 'Insecure');
-    next();
-});
-
-// #4) Protector 
-app.use('/protected', (req, res, next) => {
-    res.send('Access Denied');
-});
-
-// [ Home route ]
-app.get('/', (req, res) => {
-    res.send('Home Page');
-});
-
-
-        
-const handleListening = () => 
-    console.log("Server listening on port http://localhost:${PORT}")
+const handleListening = () =>
+  console.log(`✅ Server listenting on port http://localhost:${PORT} 🚀`);
 
 app.listen(PORT, handleListening);
-        
